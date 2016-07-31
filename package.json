@@ -17,6 +17,8 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
+    "redux": "^3.5.2",
+    "redux-saga": "^0.11.0"
   }
 }
