@@ -12,7 +12,6 @@ function callApi(endpoint, request) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    ...request,
   };
 
   return fetch(API_ROOT + endpoint, requestWithHeaders)
