@@ -3,9 +3,9 @@ import { call } from 'redux-saga/effects'
 import { fetchLastQuestion } from '../actions';
 import api from '../services/api';
 
-/* function* fetchLastQuestionTask(action) { */
-/*   const response = yield call(api.fetchLastQuestion, action.tag); */
-/* } */
+function* fetchLastQuestionTask(action) {
+  const response = yield call(api.fetchLastQuestion, action.tag);
+}
 
 function* startListenQuestionsTask(action) {
   action.tags.forEach(tag => {
