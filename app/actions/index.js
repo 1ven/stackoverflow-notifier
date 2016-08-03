@@ -9,6 +9,8 @@ export const fetchLastQuestion = createActions(
 export function startListenQuestions(tags) {
   return {
     type: 'START_LISTEN_QUESTIONS',
-    tags,
+    payload: {
+      tags,
+    },
   };
 }
