@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/configureStore';
+import { startListenQuestions } from './actions';
 
 const store = configureStore();
 
@@ -28,10 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    store.dispatch({
-      type: 'START_LISTEN_QUESTIONS',
-      tags: ['reactjs', 'redux'],
-    });
+    store.dispatch(startListenQuestions(['reactjs', 'redux']));
   }
 
   render() {
