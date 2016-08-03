@@ -1,10 +1,10 @@
 import { createActions } from '../utils';
 
-export const fetchLastQuestion = createActions(
+export const fetchLastQuestion = createActions([
   'LAST_QUESTION_FETCH_REQUEST',
   'LAST_QUESTION_FETCH_SUCCESS',
-  'LAST_QUESTION_FETCH_FAILURE'
-);
+  'LAST_QUESTION_FETCH_FAILURE',
+]);
 
 export function startListenQuestions(tags) {
   return {
