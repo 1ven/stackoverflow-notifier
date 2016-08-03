@@ -1,16 +1,29 @@
 import { takeEvery } from 'redux-saga';
-import { call } from 'redux-saga/effects'
+import { call, select, put } from 'redux-saga/effects'
 import { fetchLastQuestion } from '../actions';
 import api from '../services/api';
 
 function* fetchLastQuestionTask(action) {
-  const response = yield call(api.fetchLastQuestion, action.tag);
+  try {
+    const response = yield call(api.fetchLastQuestion, action.payload.tag);
+    const derivedQuestion = response.result.items[0];
+    const questions = yield select(state => state.questions);
+    const isQuestionFresh = questions.filter(q => q.question_id === derivedQuestion.question_id).length === 0;
+
+    if (isQuestionFresh) {
+      yield put(fetchLastQuestion.success({
+        question: derivedQuestion,
+      }));
+    }
+  } catch(err) {
+    yield put(fetchLastQuestion.failure(err.message));
+  }
 }
 
 function* startListenQuestionsTask(action) {
-  action.tags.forEach(tag => {
-    console.log(tag);
-  });
+  for (let tag of action.payload.tags) {
+    yield put(fetchLastQuestion.request({ tag }));
+  }
 };
 
 function* watchFetchLastQuestion() {
@@ -23,6 +36,7 @@ function* watchStartListenQuestions() {
 
 export default function* rootSaga() {
   yield [
-    watchStartListenQuestions()
+    watchStartListenQuestions(),
+    watchFetchLastQuestion(),
   ];
 };
