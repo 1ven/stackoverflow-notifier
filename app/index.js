@@ -29,7 +29,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    store.dispatch(startListenQuestions(['reactjs', 'redux']));
+    store.dispatch(startListenQuestions([
+      'reactjs',
+      'redux',
+      'css',
+      'javascript',
+      'html',
+      'angular',
+      'java',
+    ]));
   }
 
   render() {
@@ -38,7 +46,7 @@ class App extends Component {
     return questions.length ? (
       <div>
         {questions.map((q, i) =>
-          <div key={i}>{q.title}</div>
+          <div key={i}>{q.data.title}</div>
         )}
       </div>
     ) : (
