@@ -36,9 +36,11 @@ class App extends Component {
     const { questions } = this.state;
 
     return questions.length ? (
-      questions.map((q, i) =>
-        <div>{q.title}</div>
-      )
+      <div>
+        {questions.map((q, i) =>
+          <div key={i}>{q.title}</div>
+        )}
+      </div>
     ) : (
       <div>Questions not found.</div>
     );
