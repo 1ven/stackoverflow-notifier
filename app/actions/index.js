@@ -14,3 +14,12 @@ export function startListenQuestions(tags) {
     },
   };
 }
+
+export function addQuestion(question) {
+  return {
+    type: 'ADD_QUESTION',
+    payload: {
+      question,
+    },
+  };
+}
