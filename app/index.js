@@ -32,11 +32,6 @@ class App extends Component {
     store.dispatch(startListenQuestions([
       'reactjs',
       'redux',
-      'css',
-      'javascript',
-      'html',
-      'angular',
-      'java',
     ]));
   }
 
