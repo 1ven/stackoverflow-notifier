@@ -31,7 +31,6 @@ class App extends Component {
   componentDidMount() {
     store.dispatch(startListenQuestions([
       'reactjs',
-      'redux',
     ]));
   }
 
